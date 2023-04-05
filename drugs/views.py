@@ -19,14 +19,26 @@ def pricing(request):
 
 def contact(request):
     return render(request, "contact.html")
+
 def login(request):
     return render(request,"login.html")
 
 def base(request):
     return render(request,"base.html")
 
-def dealerdata(request):
-    return render(request,"dealerinput.html")
+def prddata(request):
+    if request.method=='POST':
+        drg_id=request.POST['drgid']
+        no_of_drg=request.POST['totdrg']
+        print("drg id  :" + drg_id )
+        print("no of drugs : " + no_of_drg)
+        context = {
+            "drgid" :  drg_id,
+            "totdrg" : no_of_drg
+         }
+        return render(request,"temp.html",context)
+    else:
+        return render(request,"dealerinput.html")
 
 def masterinput(request):
     return render(request,"masterinput.html")
