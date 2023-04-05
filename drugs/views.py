@@ -21,3 +21,12 @@ def contact(request):
     return render(request, "contact.html")
 def login(request):
     return render(request,"login.html")
+
+def base(request):
+    return render(request,"base.html")
+
+def dealerdata(request):
+    return render(request,"dealerinput.html")
+
+def masterinput(request):
+    return render(request,"masterinput.html")
