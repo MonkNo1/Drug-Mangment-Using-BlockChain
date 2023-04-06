@@ -227,12 +227,12 @@ def cons():
         'gasPrice':w3.eth.gas_price,
         'nonce':w3.eth.getTransactionCount('0x2AfF3a4F93186CbBfAE2a58a73874a08E3882612')
     })
-    p="0x98a37e7864df1b52f073b9f9a2f67b938335b4f881e7933f35d893a3cc141b8f"
+    
     signed_tx=w3.eth.account.sign_transaction(tx,private_key=p)
     tx_hash=w3.eth.send_raw_transaction(signed_tx.rawTransaction)
     tx_recipt=w3.eth.wait_for_transaction_receipt(tx_hash)
 
-
+p="0x98a37e7864df1b52f073b9f9a2f67b938335b4f881e7933f35d893a3cc141b8f"
 def create_inst():
     global tx_recipt
     global con_instance

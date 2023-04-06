@@ -29,8 +29,8 @@ def login(request):
         print("method check")
         uname = request.POST['name']
         passw = request.POST['passw']
-        print('uname : ' + uname)
-        print('passw : ' + passw)
+        # print('uname : ' + uname)
+        # print('passw : ' + passw)
         if passw in password['prd']:
             return render(request,"dealerinput.html")
         elif passw in password["mas"]:
@@ -49,10 +49,11 @@ def base(request):
 
 def prddata(request):
     if request.method=='POST':
-        drg_id=request.POST['drgid']
-        no_of_drg=request.POST['totdrg']
-        print("drg id  :" + drg_id )
-        print("no of drugs : " + no_of_drg)
+        drg_id=int(request.POST['drgid'])
+        no_of_drg=int(request.POST['totdrg'])
+        webs3.produced_data(drg_id,no_of_drg)
+        # print("drg id  :" + drg_id )
+        # print("no of drugs : " + no_of_drg)
         context = {
             "drgid" :  drg_id,
             "totdrg" : no_of_drg
@@ -63,14 +64,15 @@ def prddata(request):
 
 def masterinput(request):
     if request.method=='POST':
-        ProductID=request.POST['PrdID']
-        avilamt=request.POST['avilamt']
-        thres=request.POST['thres']
-        PripU=request.POST['PripU']
-        print("ProductID" +  ProductID)
-        print("avilamt" + avilamt)
-        print("thres" + thres)
-        print("PripU" + PripU)
+        ProductID=int(request.POST['PrdID'])
+        avilamt=int(request.POST['avilamt'])
+        thres=int(request.POST['thres'])
+        PripU=int(request.POST['PripU'])
+        webs3.add_drug_by_dm(ProductID,avilamt,thres,PripU)
+        # print("ProductID" +  ProductID)
+        # print("avilamt" + avilamt)
+        # print("thres" + thres)
+        # print("PripU" + PripU)
         context = {
             "ProductID" :  ProductID,
             "avilamt" : avilamt,
@@ -83,12 +85,15 @@ def masterinput(request):
 
 def hostpitalinput(request):
     if request.method=='POST':
-        hospid=request.POST['hospid']
-        patid=request.POST['patid']
-        docid=request.POST['docid']
-        print("ProductID" + hospid)
-        print("patid" +patid)
-        print("docid" + docid)
+        hospid=int(request.POST['hospid'])
+        patid=int(request.POST['patid'])
+        docid=int(request.POST['docid'])
+        webs3.reg_d(docid)
+        webs3.reg_pat(patid)
+        webs3.reg_h(hospid)
+        # print("ProductID" + hospid)
+        # print("patid" +patid)
+        # print("docid" + docid)
         context = {
             "hospid" : hospid,
             "patid" :patid,
@@ -105,11 +110,12 @@ def drugbuy(request):
         patid=request.POST['patid']
         docid=request.POST['docid']
         reqamt=request.POST['reqamt']
-        print("hosid" +  hosid)
-        print("ProductID" + ProductID)
-        print("patid" + patid)
-        print("docid" + docid)
-        print("reqamt" + reqamt)
+        webs3.buydrug(hosid,ProductID,reqamt,docid,patid)
+        # print("hosid" +  hosid)
+        # print("ProductID" + ProductID)
+        # print("patid" + patid)
+        # print("docid" + docid)
+        # print("reqamt" + reqamt)
         context = {
             "hosid" :  hosid,
             "ProductID" : ProductID,
