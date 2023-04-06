@@ -38,45 +38,37 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
+   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1><a href=" {% static 'index.html' %} ">SoftLand</a></h1>
+        <h1><a href="/">DrugGo</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href=" {% static 'index.html' %} "><img src=" {% static 'assets/img/logo.png' %} " alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="" href="">Home</a></li>
+          <li><a class="active " href="/">Home</a></li>
           <li><a href="features">Features</a></li>
-          <li><a class="active" href="pricing">Pricing</a></li>
           <li><a href="blog">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Portals</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="login">Producer Login</a></li>
+              <li><a href="login">Master Login</a></li>
+              <li><a href="login">Hospital Login</a></li>
+              <li><a href="login">Buy Drugs Login</a></li>
             </ul>
           </li>
           <li><a href="contact">Contact Us</a></li>
+          <li><a href="pricing">Logins</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
+
 
   <main id="main">
 
@@ -99,8 +91,8 @@
           <div class="col-12">
             <div class="row justify-content-center">
               <div class="col-md-7 text-center hero-text">
-                <h1 data-aos="fade-up" data-aos-delay="">Our Pricing</h1>
-                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h1 data-aos="fade-up" data-aos-delay="">PORTALS</h1>
+                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">Login using correct portal like Producer Login , Master Login , and Hospital Login</p>
               </div>
             </div>
           </div>
@@ -114,8 +106,8 @@
 
         <div class="row justify-content-center text-center">
           <div class="col-md-7 mb-5">
-            <h2 class="section-heading">Choose A Plan</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere illum obcaecati inventore velit laborum earum.</p>
+            <h2 class="section-heading">LOGIN PORTALS</h2>
+            {% comment %} <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere illum obcaecati inventore velit laborum earum.</p> {% endcomment %}
           </div>
         </div>
         <div class="row align-items-stretch">
@@ -123,43 +115,26 @@
           <div class="col-lg-4 mb-4 mb-lg-0">
             <div class="pricing h-100 text-center">
               <span>&nbsp;</span>
-              <h3>Basic</h3>
-              <ul class="list-unstyled">
-                <li>Create up to 5 forms</li>
-                <li>Generate 100 monthly reports</li>
-              </ul>
+              <h3>Drug Producer</h3>
               <div class="price-cta">
-                <strong class="price">Free</strong>
                 <p><a href="login" class="btn btn-white">Login</a></p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 mb-4 mb-lg-0">
             <div class="pricing h-100 text-center popular">
-              <span class="popularity">Most Popular</span>
-              <h3>Professional</h3>
-              <ul class="list-unstyled">
-                <li>Create up to 20 forms</li>
-                <li>Generate 2500 monthly reports</li>
-                <li>Manage a team of up to 5 people</li>
-              </ul>
+            <br>
+              <h3>Drug Master</h3>
               <div class="price-cta">
-                <strong class="price">$9.95/month</strong>
                 <p><a href="login" class="btn btn-white">Login</a></p>
               </div>
             </div>
           </div>
           <div class="col-lg-4 mb-4 mb-lg-0">
             <div class="pricing h-100 text-center">
-              <span class="popularity">Best Value</span>
+              <br>
               <h3>Ultimate</h3>
-              <ul class="list-unstyled">
-                <li>Create up to 20 forms</li>
-                <li>Generate 2500 monthly reports</li>
-                <li>Manage a team of up to 5 people</li>
-              </ul>
               <div class="price-cta">
-                <strong class="price">$199.95/month</strong>
                 <p><a href="login" class="btn btn-white">Login</a></p>
               </div>
             </div>
