@@ -58,7 +58,7 @@ def prddata(request):
             "drgid" :  drg_id,
             "totdrg" : no_of_drg
          }
-        return render(request,"temp.html",context)
+        return render(request,"dealerinput.html",context)
     else:
         return render(request,"dealerinput.html")
 
@@ -79,7 +79,7 @@ def masterinput(request):
             "thres" : thres,
             "PripU" : PripU
          }
-        return render(request,"temp.html",context)
+        return render(request,"masterinput.html",context)
     else:
         return render(request,"masterinput.html")
 
@@ -99,7 +99,7 @@ def hostpitalinput(request):
             "patid" :patid,
             "docid" : docid
          }
-        return render(request,"temp.html",context)
+        return render(request,"hospitalinput.html",context)
     else:
         return render(request,"hospitalinput.html")
 
@@ -123,6 +123,6 @@ def drugbuy(request):
             "docid" :docid,
             "reqamt" : reqamt
          }
-        return render(request,"temp.html",context)
+        return render(request,"drugbuy.html",context)
     else:
         return render(request,"drugbuy.html")
