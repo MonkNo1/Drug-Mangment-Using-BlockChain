@@ -41,10 +41,61 @@ def prddata(request):
         return render(request,"dealerinput.html")
 
 def masterinput(request):
-    return render(request,"masterinput.html")
+    if request.method=='POST':
+        ProductID=request.POST['ProductID']
+        avilamt=request.POST['avilamt']
+        thres=request.POST['thres']
+        PripU=request.POST['PripU']
+        print("ProductID" +  ProductID)
+        print("avilamt" + avilamt)
+        print("thres" + thres)
+        print("PripU" + PripU)
+        context = {
+            "ProductID" :  ProductID,
+            "avilamt" : avilamt,
+            "thres" : thres,
+            "PripU" : PripU
+         }
+        return render(request,"temp.html",context)
+    else:
+        return render(request,"masterinput.html")
 
 def hostpitalinput(request):
-    return render(request,"hospitalinput.html")
+    if request.method=='POST':
+        ProductID=request.POST['ProductID']
+        patid=request.POST['patid']
+        docid=request.POST['docid']
+        print("ProductID" + ProductID)
+        print("patid" +patid)
+        print("docid" + docid)
+        context = {
+            "ProductID" : ProductID,
+            "patid" :patid,
+            "docid" : docid
+         }
+        return render(request,"temp.html",context)
+    else:
+        return render(request,"hospitalinput.html")
 
 def drugbuy(request):
-    return render(request,"drugbuy.html")
+    if request.method=='POST':
+        hosid=request.POST['hosid']
+        ProductID=request.POST['ProductID']
+        patid=request.POST['patid']
+        docid=request.POST['docid']
+        reqamt=request.POST['reqamt']
+        print("hosid" +  hosid)
+        print("ProductID" + ProductID)
+        print("patid" + patid)
+        print("docid" + docid)
+        print("reqamt" + reqamt)
+        context = {
+            "hosid" :  hosid,
+            "ProductID" : ProductID,
+            "patid" : patid,
+            "docid" :docid,
+            "reqamt" : reqamt
+         }
+        return render(request,"temp.html",context)
+    else:
+        return render(request,"drugbuy.html")
