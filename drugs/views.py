@@ -42,3 +42,9 @@ def prddata(request):
 
 def masterinput(request):
     return render(request,"masterinput.html")
+
+def hostpitalinput(request):
+    return render(request,"hospitalinput.html")
+
+def drugbuy(request):
+    return render(request,"drugbuy.html")

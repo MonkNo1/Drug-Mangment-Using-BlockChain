@@ -12,4 +12,6 @@ urlpatterns = [
     path('base', views.base, name='base'),
     path('prddata', views.prddata, name='dealup'),
     path('masup', views.masterinput, name='masup'),
+    path('hosup', views.hostpitalinput, name='hosup'),
+    path('drgby', views.drugbuy, name='drgby'),
 ]
