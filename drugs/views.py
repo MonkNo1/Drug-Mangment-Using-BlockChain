@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# from . import webs3
-
+from . import webs3
+webs3.call_me_first()
 password = {'prd':['monk',"monk123"],'mas' : ['abi','abi123'],'hos':['hari','hari123'],'buyd':['dhan','dhan123']}
 
 
