@@ -89,7 +89,7 @@ def hostpitalinput(request):
         patid=int(request.POST['patid'])
         docid=int(request.POST['docid'])
         webs3.reg_d(docid)
-        webs3.reg_pat(patid)
+        webs3.reg_pat(patid,hospid)
         webs3.reg_h(hospid)
         # print("ProductID" + hospid)
         # print("patid" +patid)
@@ -106,7 +106,7 @@ def hostpitalinput(request):
 def drugbuy(request):
     if request.method=='POST':
         hosid=request.POST['hosid']
-        ProductID=request.POST['ProductID']
+        ProductID=request.POST['PrdID']
         patid=request.POST['patid']
         docid=request.POST['docid']
         reqamt=request.POST['reqamt']
