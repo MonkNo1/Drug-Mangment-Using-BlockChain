@@ -42,7 +42,7 @@ def prddata(request):
 
 def masterinput(request):
     if request.method=='POST':
-        ProductID=request.POST['ProductID']
+        ProductID=request.POST['PrdID']
         avilamt=request.POST['avilamt']
         thres=request.POST['thres']
         PripU=request.POST['PripU']

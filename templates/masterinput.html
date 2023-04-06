@@ -1,10 +1,11 @@
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
        <!-- <img src="your-image-here.jpg"> -->
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <form action="masup" method="POST">
+        {%csrf_token%}
         <div class="formbold-input-flex">
           <div>
-            <label for="ProductID" class="formbold-form-label"> Product Id </label>
+            <label for="PrdID" class="formbold-form-label"> Product Id </label>
             <input
               type="text"
               name="PrdID"

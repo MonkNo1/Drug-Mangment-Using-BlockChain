@@ -1,7 +1,8 @@
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
        <!-- <img src="your-image-here.jpg"> -->
-      <form action="https://formbold.com/s/FORM_ID" method="POST">
+      <form action="drgby" method="POST">
+        {%csrf_token%}
         <div class="formbold-mb-3">
           <label for="hosid" class="formbold-form-label"> Hospital Id </label>
           <input

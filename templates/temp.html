@@ -7,13 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hiii</h1>
-    {% for i in drgid %}
-        {{i}}
-    {% endfor %}
-    <br>
-    {% for i in totdrg %}
-        {{i}}
+    {% for key, value in resources.items %}
+    <b>{{ key }}: </b>{{ value }}
     {% endfor %}
 </body>
 </html>
