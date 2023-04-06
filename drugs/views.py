@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+# from . import webs3
 
 
 def index(request):
