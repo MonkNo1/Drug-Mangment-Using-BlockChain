@@ -15,9 +15,10 @@
             <p>Please enter your credentials to login.</p>
           </div>
         </div>
-        <form class="login-form">
-          <input type="text" placeholder="username"/>
-          <input type="password" placeholder="password"/>
+        <form class="login-form" action="login" method="post">
+        {%csrf_token%}
+          <input name='name' type="text" placeholder="username"/>
+          <input name='passw'type="password" placeholder="password"/>
           <button>login</button>
           <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>

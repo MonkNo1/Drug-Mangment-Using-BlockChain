@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # from . import webs3
 
+password = {'prd':['monk',"monk123"],'mas' : ['abi','abi123'],'hos':['hari','hari123'],'buyd':['dhan','dhan123']}
+
 
 def index(request):
     return render(request, "index.html")
@@ -22,7 +24,25 @@ def contact(request):
     return render(request, "contact.html")
 
 def login(request):
-    return render(request,"login.html")
+    print("login check")
+    if request.method== 'POST':
+        print("method check")
+        uname = request.POST['name']
+        passw = request.POST['passw']
+        print('uname : ' + uname)
+        print('passw : ' + passw)
+        if passw in password['prd']:
+            return render(request,"dealerinput.html")
+        elif passw in password["mas"]:
+            return render(request,"masterinput.html")
+        elif passw in password["hos"]:
+            return render(request,"hospitalinput.html")
+        elif passw in password["buyd"]:
+            return render(request,"drugbuy.html")
+        else:
+            return render(request,"login.html")
+    else:
+        return render(request,"login.html")
 
 def base(request):
     return render(request,"base.html")
@@ -63,14 +83,14 @@ def masterinput(request):
 
 def hostpitalinput(request):
     if request.method=='POST':
-        ProductID=request.POST['ProductID']
+        hospid=request.POST['hospid']
         patid=request.POST['patid']
         docid=request.POST['docid']
-        print("ProductID" + ProductID)
+        print("ProductID" + hospid)
         print("patid" +patid)
         print("docid" + docid)
         context = {
-            "ProductID" : ProductID,
+            "hospid" : hospid,
             "patid" :patid,
             "docid" : docid
          }
