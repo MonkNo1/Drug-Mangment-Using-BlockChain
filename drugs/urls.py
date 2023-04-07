@@ -14,4 +14,5 @@ urlpatterns = [
     path('masup', views.masterinput, name='masup'),
     path('hosup', views.hostpitalinput, name='hosup'),
     path('drgby', views.drugbuy, name='drgby'),
+    path('seedet', views.getdetails, name='seedet'),
 ]
