@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import webs3
 webs3.call_me_first()
-password = {'prd':['monk',"monk123"],'mas' : ['abi','abi123'],'hos':['hari','hari123'],'buyd':['dhan','dhan123']}
+password = {'prd':['monk',"monk123"],'mas' : ['abi','abi123'],'hos':['hari','hari123'],'buyd':['dhan','dhan123'],'owner':['power','power123']}
 
 
 def index(request):
@@ -39,10 +39,17 @@ def login(request):
             return render(request,"hospitalinput.html")
         elif passw in password["buyd"]:
             return render(request,"drugbuy.html")
+        elif passw in password["owner"]:
+            return render(request,"seedetails.html")
         else:
             return render(request,"login.html")
     else:
         return render(request,"login.html")
+
+def getdetails(request):
+    patid = request.GET['Patid']
+    print("the patient id is : ", patid)
+    return render(request,"seedetails.html")
 
 def base(request):
     return render(request,"base.html")
