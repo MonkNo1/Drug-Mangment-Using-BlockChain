@@ -1,4 +1,5 @@
 from solcx import compile_source,install_solc
+import datetime
 install_solc()
 from web3 import Web3
 con_instance=""
@@ -52,7 +53,7 @@ def compile():
     uint [] patientarr;
     uint [] doctors;
     mapping (uint => patient) patients;
-    mapping (uint => patient_log) logs;
+    mapping (uint => patient_log) public logs;
     uint logid=1;
         modifier onlydm(address d)
         {
@@ -320,3 +321,15 @@ def call_me_first():
     cons()
     create_inst()
     registerprod()
+def retrive_data(logid):
+    res=[]
+    l=con_instance.functions.logs(logid)
+    res.append(l[0])
+    res.append(l[1])
+    date_time = datetime.datetime.fromtimestamp(l[2])
+    d= date_time.strftime("%d/%m/%Y time:  %H:%M:%S")
+    res.append(d)
+    res.append(l[3])
+    res.append(l[4])
+    return res
+    
