@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from . import webs3
 webs3.call_me_first()
 password = {'prd':['monk',"monk123"],'mas' : ['abi','abi123'],'hos':['hari','hari123'],'buyd':['dhan','dhan123'],'owner':['power','power123']}
-
+temp = ['patientid' , 'doctorId' , 'Time' ,'Drug Id' , 'Amount Paid']
 
 def index(request):
     return render(request, "index.html")
@@ -21,7 +21,12 @@ def pricing(request):
     return render(request, "pricing.html")
 
 def contact(request):
-    return render(request, "contact.html")
+    context = {
+        'left' : temp,
+        'value' : temp
+    }
+    print(context)
+    return render(request, "logval.html",context)
 
 def login(request):
     print("login check")
@@ -47,8 +52,9 @@ def login(request):
         return render(request,"login.html")
 
 def getdetails(request):
-    patid = request.GET['Patid']
-    print("the patient id is : ", patid)
+    patid = request.GET['patid']
+    # print("the patient id is : ", patid)
+    
     return render(request,"seedetails.html")
 
 def base(request):
