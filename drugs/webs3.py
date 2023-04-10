@@ -1,6 +1,9 @@
 from web3 import Web3
 from solcx import compile_source, install_solc
 import datetime
+import json 
+f = open("drugs/address.json",)
+addr = json.load(f)
 install_solc()
 con_instance = ""
 w3 = Web3(Web3.HTTPProvider('HTTP://127.0.0.1:7545'))
@@ -225,19 +228,16 @@ def compile():
 
 def cons():
     global tx_recipt
-    tx = drugcompany.constructor('0xedD8b6Ef5c096147c3D8A7B812A1c108626E6a5B').buildTransaction(
+    tx = drugcompany.constructor(addr['hosp']).build_transaction(
         {
-            'from': '0x2AfF3a4F93186CbBfAE2a58a73874a08E3882612',
+            'from': addr['drgman'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount('0x2AfF3a4F93186CbBfAE2a58a73874a08E3882612')
+            'nonce': w3.eth.get_transaction_count(addr['drgman'])
         })
 
-    signed_tx = w3.eth.account.sign_transaction(tx, private_key=p)
+    signed_tx = w3.eth.account.sign_transaction(tx, private_key=addr['drgman_pk'])
     tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
     tx_recipt = w3.eth.wait_for_transaction_receipt(tx_hash)
-
-
-p = "0x98a37e7864df1b52f073b9f9a2f67b938335b4f881e7933f35d893a3cc141b8f"
 
 
 def create_inst():
@@ -246,98 +246,92 @@ def create_inst():
     con_instance = w3.eth.contract(address=tx_recipt.contractAddress, abi=a)
 
 
-drud_man_add = "0x2AfF3a4F93186CbBfAE2a58a73874a08E3882612"
-drud_pr_key = "0x98a37e7864df1b52f073b9f9a2f67b938335b4f881e7933f35d893a3cc141b8f"
-hos_add = "0xedD8b6Ef5c096147c3D8A7B812A1c108626E6a5B"
-hos_pkey = "0x8f81dfa66a04e01aaa034923b177e927bde2e3c772cb58704152fce14881011e"
-
-
 def registerprod():
-    tx1 = con_instance.functions.reg_producer('0x1b7ea6b1766a6008630A5f4Ea398e9407ee23BEA').buildTransaction(
+    tx1 = con_instance.functions.reg_producer(addr['prod']).build_transaction(
         {
-            'from': drud_man_add,
+            'from': addr['drgman'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(drud_man_add)
+            'nonce': w3.eth.get_transaction_count(addr['drgman'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=p)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['drgman_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def reg_h(hos_id):
-    tx1 = con_instance.functions.reg_hos(hos_id).buildTransaction(
+    tx1 = con_instance.functions.reg_hos(hos_id).build_transaction(
         {
-            'from': hos_add,
+            'from': addr['hosp'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(hos_add)
+            'nonce': w3.eth.get_transaction_count(addr['hosp'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=hos_pkey)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['hosp_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def reg_pat(p_id, h_id):
-    tx1 = con_instance.functions.reg_patient(p_id, h_id).buildTransaction(
+    tx1 = con_instance.functions.reg_patient(p_id, h_id).build_transaction(
         {
-            'from': hos_add,
+            'from': addr['hosp'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(hos_add)
+            'nonce': w3.eth.get_transaction_count(addr['hosp'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=hos_pkey)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['hosp_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def reg_d(doc_id):
-    tx1 = con_instance.functions.reg_doctor(doc_id).buildTransaction(
+    tx1 = con_instance.functions.reg_doctor(doc_id).build_transaction(
         {
-            'from': hos_add,
+            'from': addr['hosp'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(hos_add)
+            'nonce': w3.eth.get_transaction_count(addr['hosp'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=hos_pkey)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['hosp_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def produced_data(pid, avail):
-    tx1 = con_instance.functions.add_produced_drug(pid, avail).buildTransaction(
+    tx1 = con_instance.functions.add_produced_drug(pid, avail).build_transaction(
         {
-            'from': '0x1b7ea6b1766a6008630A5f4Ea398e9407ee23BEA',
+            'from': addr['prod'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount('0x1b7ea6b1766a6008630A5f4Ea398e9407ee23BEA')
+            'nonce': w3.eth.get_transaction_count(addr['prod'])
         })
     signed_tx1 = w3.eth.account.sign_transaction(
-        tx1, private_key="0x5147e7461ee52b08fea579bcd8825863b8b4269ea1f37e5f1aab43608a657816")
+    tx1, private_key=addr['prod_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def up_avail(pid, av):
-    tx1 = con_instance.functions.update_avail(pid, av).buildTransaction(
+    tx1 = con_instance.functions.update_avail(pid, av).build_transaction(
         {
             'from': drud_man_add,
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(drud_man_add)
+            'nonce': w3.eth.get_transaction_count(drud_man_add)
         })
     signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=drud_pr_key)
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def add_drug_by_dm(p, a, t, r):
-    tx1 = con_instance.functions.add_drug(p, a, t, r).buildTransaction(
+    tx1 = con_instance.functions.add_drug(p, a, t, r).build_transaction(
         {
             'from': drud_man_add,
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(drud_man_add)
+            'nonce': w3.eth.get_transaction_count(drud_man_add)
         })
     signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=drud_pr_key)
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def buydrug(h, did, rqam, doc, pat):
-    tx1 = con_instance.functions.buy_drug(h, did, rqam, doc, pat).buildTransaction(
+    tx1 = con_instance.functions.buy_drug(h, did, rqam, doc, pat).build_transaction(
         {
-            'from': hos_add,
+            'from': addr['hosp'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.getTransactionCount(hos_add)
+            'nonce': w3.eth.get_transaction_count(addr['hosp'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=hos_pkey)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['hosp_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
