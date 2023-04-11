@@ -305,22 +305,22 @@ def produced_data(pid, avail):
 def up_avail(pid, av):
     tx1 = con_instance.functions.update_avail(pid, av).build_transaction(
         {
-            'from': drud_man_add,
+            'from': addr['drgman'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.get_transaction_count(drud_man_add)
+            'nonce': w3.eth.get_transaction_count(addr['drgman'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=drud_pr_key)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['drgman_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
 def add_drug_by_dm(p, a, t, r):
     tx1 = con_instance.functions.add_drug(p, a, t, r).build_transaction(
         {
-            'from': drud_man_add,
+            'from': addr['drgman'],
             'gasPrice': w3.eth.gas_price,
-            'nonce': w3.eth.get_transaction_count(drud_man_add)
+            'nonce': w3.eth.get_transaction_count(addr['drgman'])
         })
-    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=drud_pr_key)
+    signed_tx1 = w3.eth.account.sign_transaction(tx1, private_key=addr['drgman_pk'])
     tx_hash1 = w3.eth.send_raw_transaction(signed_tx1.rawTransaction)
 
 
@@ -344,7 +344,9 @@ def call_me_first():
 
 def retrive_data(logid):
     res = []
-    l = con_instance.functions.logs(logid)
+    l = con_instance.functions.logs(logid).call()
+    print("***")
+    print(l)
     res.append(l[0])
     res.append(l[1])
     date_time = datetime.datetime.fromtimestamp(l[2])

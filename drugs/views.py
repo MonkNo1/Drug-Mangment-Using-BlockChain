@@ -56,10 +56,11 @@ def login(request):
 
 
 def getdetails(request):
-    patid = request.GET['patid']
+    patid = int(request.GET['patid'])
+    k=webs3.retrive_data(patid)
     context = {
         'left': temp,
-        'value': temp
+        'value': k
     }
     print(context)
     return render(request, "logval.html", context)
@@ -132,11 +133,11 @@ def hostpitalinput(request):
 
 def drugbuy(request):
     if request.method == 'POST':
-        hosid = request.POST['hosid']
-        ProductID = request.POST['PrdID']
-        patid = request.POST['patid']
-        docid = request.POST['docid']
-        reqamt = request.POST['reqamt']
+        hosid = int(request.POST['hosid'])
+        ProductID = int(request.POST['PrdID'])
+        patid = int(request.POST['patid'])
+        docid = int(request.POST['docid'])
+        reqamt = int(request.POST['reqamt'])
         webs3.buydrug(hosid, ProductID, reqamt, docid, patid)
         # print("hosid" +  hosid)
         # print("ProductID" + ProductID)
