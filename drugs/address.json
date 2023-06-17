@@ -1,10 +1,10 @@
 {
     "hii": "hii",
     "boomer" : "boomerdesh",
-    "drgman":"0xf094220FE6A58cE3d6215F391fe7b02AC52A66bd",
-    "drgman_pk":"0xba3514069569e45fabafa3e6cecdcac617c4825d95ed414f8f4f9756d3c12f45",
-    "hosp":"0xd5b182f58351E2fdBB18Dff8E90E5869081B2f79",
-    "hosp_pk":"0x70a4e373c95fad8a42ba22dac2aad4b6b93a2423d1143fb7ddf2c31723e6a955",
-    "prod":"0xC456aAa74ce31Ae9860718C5d7dbf915c2A12193",
-    "prod_pk":"0x6b4cbf51c4907ed4572d56c6a33200aaa3c168b812bec05463f7c60803fe4e0b"
+    "drgman":"0x327284bddEb8cfC855a5500c34c3A7c40C65D67D",
+    "drgman_pk":"0x181dee3e7bdf4f8371d1277317259b1e677db3181e1c030fc3b766ecbaecc02e",
+    "hosp":"0x3c3777a4b34D1E586f91A640a1C2f1Bafc45c432",
+    "hosp_pk":"0xbb3a86b4d0243787a78799706473a87f0ce31e8b3a0750c8ddca9b2510c0de9c",
+    "prod":"0xe02f7e8740D039165006A167F03dEDA1dbDbd361",
+    "prod_pk":"0x21676c2481da39baeb2d1031ad80ff240978d4a5864c0176b78e9038c114f2dc"
 }

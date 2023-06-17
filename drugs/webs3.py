@@ -243,7 +243,7 @@ def cons():
 def create_inst():
     global tx_recipt
     global con_instance
-    con_instance = w3.eth.contract(address=tx_recipt.contractAddress, abi=a)
+    con_instance = w3.eth.contract(address="0x4d48741217Da148223DBC16dDD6361326D4e061b", abi=a)
 
 
 def registerprod():
@@ -337,7 +337,6 @@ def buydrug(h, did, rqam, doc, pat):
 
 def call_me_first():
     compile()
-    cons()
     create_inst()
     registerprod()
 
